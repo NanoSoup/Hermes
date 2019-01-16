@@ -1,4 +1,5 @@
 <?php
+namespace NanoSoup\Hermes\Form;
 
 use Symfony\Component\Form\Form;
 use Symfony\Bridge\Twig\Extension\FormExtension;
