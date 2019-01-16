@@ -20,10 +20,8 @@ class HermesForm extends Form
      *
      * @param \Symfony\Component\Form\FormConfigInterface $config
      */
-    public function __construct(\Symfony\Component\Form\FormConfigInterface $config)
+    public function __construct()
     {
-        parent::__construct($config);
-
         add_filter('twig_apply_filters', function ($twig) {
             $defaultFormTheme = 'form_div_layout.html.twig';
 
@@ -60,7 +58,7 @@ class HermesForm extends Form
         }, 10, 3);
     }
 
-    public function getForm(stdClass $form): \Symfony\Component\Form\FormView
+    public function getForm($form): \Symfony\Component\Form\FormView
     {
         $factory = Forms::createFormFactoryBuilder()
             ->getFormFactory();
