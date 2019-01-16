@@ -1,0 +1,26 @@
+{
+  "name": "nanosoup/hermes",
+  "description": "Hermes Bundle",
+  "authors": [
+    {
+      "name": "Harry Wiseman",
+      "email": "enquiries@harry-wiseman.co.uk"
+    },
+    {
+      "name": "Jez Emery",
+      "email": "github@hiohzo.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "symfony/form": "^4.2",
+    "symfony/twig-bridge": "^4.3@dev",
+    "symfony/translation": "^4.3@dev",
+    "symfony/config": "^4.3@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "NanoSoup\\Hermes\\": "src/"
+    }
+  }
+}
