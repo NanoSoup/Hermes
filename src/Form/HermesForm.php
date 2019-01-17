@@ -58,13 +58,13 @@ class HermesForm extends Form
         }, 10, 3);
     }
 
-    public function getForm($form): \Symfony\Component\Form\FormView
+    public function getForm($form): \Symfony\Component\Form\Form
     {
         $factory = Forms::createFormFactoryBuilder()
             ->getFormFactory();
 
         $form = $factory->create($form);
 
-        return $form->createView();
+        return $form;
     }
 }
