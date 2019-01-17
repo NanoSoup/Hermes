@@ -58,6 +58,10 @@ class HermesForm extends Form
         }, 10, 3);
     }
 
+    /**
+     * @param $form
+     * @return Form
+     */
     public function getForm($form): \Symfony\Component\Form\Form
     {
         $factory = Forms::createFormFactoryBuilder()
@@ -66,5 +70,25 @@ class HermesForm extends Form
         $form = $factory->create($form);
 
         return $form;
+    }
+
+    /**
+     * Pushes submissions from forms to the data layer
+     *
+     * @param $form - The name of the form type submitted
+     * @return string
+     */
+    public function push_submission_gtm($form, $event = 'formSubmission'): string
+    {
+        $confirmation =
+            "<script>" .
+            "    window.dataLayer = window.dataLayer || [];" .
+            "    window.dataLayer.push({" .
+            "        'event': '" . $event . "'," .
+            "        'formId': '" . $form['id'] . "'" .
+            "    });" .
+            "</script>";
+
+        return $confirmation;
     }
 }
