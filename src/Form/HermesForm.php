@@ -1,4 +1,5 @@
 <?php
+
 namespace NanoSoup\Hermes\Form;
 
 use Symfony\Component\Form\Form;
@@ -90,5 +91,18 @@ class HermesForm extends Form
             "</script>";
 
         return $confirmation;
+    }
+
+    /**
+     * @param $data
+     * @param $subject
+     * @param $template
+     * @param null $to
+     * @param null $from
+     * @return bool
+     */
+    public function send($data, $subject, $template, $to = null, $from = null): bool
+    {
+        return wp_mail($to, $subject, \Timber::compile($template, $data));
     }
 }
