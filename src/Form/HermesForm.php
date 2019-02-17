@@ -28,15 +28,10 @@ class HermesForm extends Form
 
             $appVariableReflection = new \ReflectionClass('\Symfony\Bridge\Twig\AppVariable');
             $vendorTwigBridgeDirectory = dirname($appVariableReflection->getFileName());
-            // the path to your other templates
-            $viewsDirectory = realpath(get_stylesheet_directory());
-            $acfViewsDirectory = $viewsDirectory . '/classes/ACF/Blocks/views/';
 
-            $twig = new Environment(new FilesystemLoader([
-                $viewsDirectory,
-                $acfViewsDirectory,
-                $vendorTwigBridgeDirectory . '/Resources/views/Form',
-            ]));
+            $loader = $twig->getLoader();
+            $loader->addPath($vendorTwigBridgeDirectory . '/Resources/views/Form'); //or $loader->prependPath('...')
+            $twig->setLoader($loader);
 
             $formEngine = new TwigRendererEngine([$defaultFormTheme], $twig);
 
